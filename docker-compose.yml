@@ -20,6 +20,8 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         networks: 
             - traefik
-        restart_policy:
-            condition: any
+        
+        deploy:
+            restart_policy:
+                condition: any
             
