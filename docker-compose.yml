@@ -21,7 +21,4 @@ services:
         networks: 
             - traefik
         
-        deploy:
-            restart_policy:
-                condition: any
             
