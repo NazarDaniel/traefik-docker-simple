@@ -5,9 +5,10 @@ logLevel = "INFO"
     endpoint = "unix:///var/run/docker.sock"
     exposedByDefault = false
     watch = true
-[api]
-    dashboard = true
-    entrypoint = "dashboard"
+
+#[api]
+#    dashboard = true
+#    entrypoint = "dashboard"
 
 [entryPoints]
     [entryPoints.http]
@@ -17,15 +18,11 @@ logLevel = "INFO"
     [entryPoints.https]
     address = ":443"
          [entryPoints.https.tls]
-#            [[entryPoints.https.tls.certificates]]
-#            certFile = "/certs/tls.crt"
-#            keyFile = "/certs/tls.key"
-
     [entryPoints.dashboard]
     address = ":8080"
 
 [acme]
-    storage = "/root/acme.json"
+    storage = "/root/acme/"
     entryPoint = "https"
     onHostRule = true
     email = "comercial@locness.com.br"
