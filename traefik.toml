@@ -1,29 +1,33 @@
-debug = false
-
-logLevel = "ERROR"
-defaultEntryPoints = ["https","http"]
-
-[entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-  [entryPoints.https.tls]
-
-[retry]
+defaultEntryPoints = ["http", "https"]
+logLevel = "INFO"
 
 [docker]
-endpoint = "unix:///var/run/docker.sock"
-domain = "galaxyerp.com.br"
-watch = true
-exposedbydefault = false
+    endpoint = "unix:///var/run/docker.sock"
+    exposedByDefault = false
+    watch = true
+
+#[api]
+#    dashboard = true
+#    entrypoint = "dashboard"
+
+[entryPoints]
+    [entryPoints.http]
+    address = ":80"
+        [entryPoints.http.redirect]
+        entryPoint = "https"
+    [entryPoints.https]
+    address = ":443"
+         [entryPoints.https.tls]
+    [entryPoints.dashboard]
+    address = ":8080"
 
 [acme]
-email = "comercial@locness.com.br"
-storage = "acme.json"
-entryPoint = "https"
-OnHostRule = true
-[acme.httpChallenge]
-entryPoint = "http"
+    storage = "/root/acme/acme.json"
+    entryPoint = "https"
+    onHostRule = true
+    email = "comercial@locness.com.br"
+    #caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+    caServer = "https://acme-v02.api.letsencrypt.org/directory"
+
+    [acme.httpChallenge]
+        entryPoint = "http"
