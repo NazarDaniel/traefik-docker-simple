@@ -22,7 +22,7 @@ logLevel = "INFO"
     address = ":8080"
 
 [acme]
-    storage = "/root/acme/"
+    storage = "/root/acme/acme.json"
     entryPoint = "https"
     onHostRule = true
     email = "comercial@locness.com.br"
